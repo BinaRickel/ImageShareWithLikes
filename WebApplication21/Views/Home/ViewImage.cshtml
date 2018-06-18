@@ -1,0 +1,19 @@
+﻿@using WebApplication21.Models
+@model ViewImageModel
+
+<div class="row" style="margin-top:60px">
+    <div class="col-md-8 col-md-offset-2 well">
+        <h3 style="text-align:center"> @Model.Image.Title</h3>
+        <img src="/UploadedImages/@Model.Image.FileName" style="width: 733px;" />
+        @{ bool status = Model.HasPermission;}
+        <button @(!status ? "" : "disabled") id="button" data-image-id="@Model.Image.Id" data-button-status="@Model.HasPermission" style="background-color:transparent; background-repeat:no-repeat ; border:0; position:absolute; top:85.5%; right:-3%; transform: translate(-50%, -50%); padding: 12px 24px; border: none; cursor: pointer; border-radius: 5px"><img src="~/like.png" style="height:60px" /></button>
+        <h3><span id="likeCount" style="position:absolute; top:83%; right:9%">@Model.Image.LikeCount</span></h3>
+        <br />
+    </div>
+</div>
+
+
+@section scripts
+{
+    <script src="/Scripts/index.js"></script>
+}
